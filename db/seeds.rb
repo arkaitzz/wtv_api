@@ -23,11 +23,11 @@ end
 
 5.times do
   serial = Serial.where(title: Faker::Book.title, plot: Faker::Hipster.sentence).create
-  PurchaseOption.where(price: 2.99, video_quality: 'HD', product_id: serial.id).create
-  PurchaseOption.where(price: 2.98, video_quality: 'SD', product_id: serial.id).create
-  #still need to add the chapters of the season
+  # Add three chapters per season and serial
   Chapter.where(season: 1, chapter: 1, serial_id: serial.id).create
   Chapter.where(season: 1, chapter: 2, serial_id: serial.id).create
   Chapter.where(season: 1, chapter: 3, serial_id: serial.id).create
+  PurchaseOption.where(price: 2.99, video_quality: 'HD', product_id: serial.id).create
+  PurchaseOption.where(price: 2.98, video_quality: 'SD', product_id: serial.id).create
 end
 

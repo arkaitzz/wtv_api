@@ -17,3 +17,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+log/
+test/
+
+# Ruby version control files.
+.rvmrc
+.rbenv-version
+.ruby-version
+

@@ -1,9 +1,10 @@
 class ApiController < ApplicationController
+
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def record_not_found
     render json:{
-    errors: 'Record not found'
+    message: 'Record not found'
     }.to_json, status: 404
   end
 
@@ -31,16 +32,20 @@ class ApiController < ApplicationController
   end
 
   def serial_list
-    @films = Serial.all.by_newest
-    render json: @films
+    @serials = Serial.all.by_newest
+    render json: @serials
   end
 
   def purchase_by_ids
     if params[:user_id] && params[:purchase_id]
-      user_id = User.find(params[:user_id]) # check if the user exists
-      purchase_id = PurchaseOption.find(params[:purchase_id]) # check if the PurchaseOption exists
-      purchase = Ticket.where(purchase_date: Time.now, expiration_date: Time.now+2.days, user_id: params[:user_id], purchase_option_id: params[:purchase_id] ).new
-       if purchase.valid?
+      user_params = User.find(params[:user_id]) # check if the user exists
+      purchase_params = PurchaseOption.find(params[:purchase_id]) # check if the PurchaseOption exists
+      purchase = Ticket.where(purchase_date: Time.now,
+                              expiration_date: Time.now+2.days,
+                              user_id: user_params.id,
+                              purchase_option_id: purchase_params.id,
+                              product_id: purchase_params.product_id).new
+      if purchase.valid?
         purchase.save
         render json:{
         message: 'Succesfully purchased',

@@ -3,6 +3,7 @@ class CreateTickets < ActiveRecord::Migration
     create_table :tickets do |t|
       t.references :user, index: true
       t.references :purchase_option, index: true
+      t.references :product, index: true
       t.datetime :purchase_date
       t.datetime :expiration_date
 
