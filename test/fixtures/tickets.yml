@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  purchase_option_id: 
+  purchase_date: 2016-07-14 09:08:50
+  expiration_date: 2016-07-14 09:08:50
+
+two:
+  user_id: 
+  purchase_option_id: 
+  purchase_date: 2016-07-14 09:08:50
+  expiration_date: 2016-07-14 09:08:50

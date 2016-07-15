@@ -4,10 +4,27 @@ WtvApi::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  get "/products/films" => "products#movie_list"
+  get '/products/serials' => 'products#serial_list'
+
+  get "/catalog/movies" => "products#movie_list"
+  get '/catalog/seasons' => 'products#serial_list'
+  get '/catalog/' => 'products#index'
+
+
   get '/api/users', to: 'api#user_index'
+  get '/api/users/:user_id/library', to: 'api#user_library'
+  get "/api/catalog/movies" => "api#movie_list"
+  get '/api/catalog/seasons' => 'api#serial_list'
+  get '/api/catalog/' => 'api#product_list'
+# Purchase a title by purchase option ID
+  get '/api/:user_id/purchase/:purchase_id' => 'api#purchase_by_ids', as: :purchase
+
   resources :users
+  resources :products
   namespace :api, defaults: {format: :json} do
   end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

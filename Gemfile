@@ -10,6 +10,9 @@ gem 'mysql2'
 
 gem 'faker'
 
+#gem 'active_model_serializers', '= 0.9'
+gem 'active_model_serializers', '~> 0.10.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
