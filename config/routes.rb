@@ -1,6 +1,4 @@
 WtvApi::Application.routes.draw do
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   get '/api/users' => 'api#user_index'
   get '/api/users/:user_id/library' => 'api#user_library'

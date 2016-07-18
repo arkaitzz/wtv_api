@@ -41,7 +41,7 @@ class ApiController < ApplicationController
       user_params = User.find(params[:user_id]) # check if the user exists
       purchase_params = PurchaseOption.find(params[:purchase_id]) # check if the PurchaseOption exists
       purchase = Ticket.where(purchase_date: Time.now,
-                              expiration_date: Time.now+2.days,
+                              expiration_date: Time.now + 2.days,
                               user_id: user_params.id,
                               purchase_option_id: purchase_params.id,
                               product_id: purchase_params.product_id).new

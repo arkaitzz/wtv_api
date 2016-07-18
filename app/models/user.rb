@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :tickets
-
-  scope :by_n, order(time_left: :desc)
+  has_many :tickets, :order => 'expiration_date ASC'
 
   def alive_tickets
     self.tickets.where("purchase_date < ? AND expiration_date > ?", Time.now, Time.now)
